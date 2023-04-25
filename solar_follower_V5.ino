@@ -7,15 +7,19 @@ int ServoHLimitHigh = 175;
 int ServoHLimitLow = 5;
 // 65 degrees MAX
 
-Servo horizontal2; // horizontal servo
-
+///Servo horizontal2; // horizontal servo 2
+///the above code can be deleted/cloned/enabled to add/remove more solar followers
+///this one is for horizontal servo
 
 Servo vertical; // vertical servo
 int ServoV = 90; 
 int ServoVLimitHigh = 135;
 int ServoVLimitLow = 45;
 
-Servo vertical2; // vertical servo
+///Servo vertical2; // vertical servo
+///the above code can be deleted/cloned/enabled to add/remove more solar followers
+///this one is for verticle servo
+
 
 // LDR pin connections
 // name = analogpin;
@@ -25,14 +29,18 @@ int ldrBottomLeft = A1; //LDR bottom left - connect to pin A1
 int ldrBottomRight = A3; //ldr bottom rigt - connect to pin A3
 
 void setup(){
-horizontal.attach(9);
-vertical.attach(10);
-horizontal2.attach(11);
-vertical2.attach(12);  
-horizontal.write(90);
-vertical.write(90);
-horizontal2.write(90);
-vertical2.write(90);
+horizontal.attach(9); ///connect bottom servo signal pin to pin 9
+vertical.attach(10);  ///connect top servo signal pin to pin 10
+ 
+///horizontal2.attach(11); ///optional to add more followers
+///vertical2.attach(12);  ///optional to add more followers
+ 
+horizontal.write(90); //set inital H servo angle to 90
+vertical.write(90); //set inital V servo angle to 90
+ 
+///horizontal2.write(90); ///optional to add more followers
+///vertical2.write(90); ///optional to add more followers
+ 
 delay(500);
 }
 
@@ -77,7 +85,7 @@ if (-1*tollerance > VerticleDifference || VerticleDifference > tollerance) // If
 }
 
 
-//Horizontal Movement (most of the stuff here is the exact same as Verticle movement.
+//Horizontal Movement (most of the stuff here is the exact same as Verticle movement.)
 if (-1*tollerance > HorizontalDifference || HorizontalDifference > tollerance) 
  {
  if (AverageLeftValue > AverageRightValue)
@@ -101,8 +109,10 @@ if (-1*tollerance > HorizontalDifference || HorizontalDifference > tollerance)
 //makes the servo move  
 vertical.write(ServoV);
 horizontal.write(ServoH);  
-vertical2.write(ServoV);
-horizontal2.write(ServoH);
+ 
+///vertical2.write(ServoV); ///<optional to add more followers
+///horizontal2.write(ServoH); ///<optional to add more followers
+ 
 //How long the program should wait before doing it all over again.
   delay(dtime);
  
